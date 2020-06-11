@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+import { UsersProvider } from './context/UsersContext'
+
+import UsersMap from './components/UsersMap/UsersMap'
+import UserList from './components/UserList/UserList'
+
+import './App.css'
+
+const App = () => {
+  const mapCenter = {
+    lat: 39.4077643,
+    lng: -0.4315508
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <UsersProvider>
+      <div className='app'>
+        <UserList mapCenter={mapCenter} />
+        <UsersMap mapCenter={mapCenter} />
+      </div>
+    </UsersProvider>
+  )
 }
 
-export default App;
+export default App
